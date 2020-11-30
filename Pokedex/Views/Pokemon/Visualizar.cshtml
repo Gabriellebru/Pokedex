@@ -1,0 +1,28 @@
+﻿@model List<Pokedex.Models.Pokemon>
+
+
+<h2>Lista de Pokémons</h2>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                Pokemon ID
+            </th>
+            <th>
+                Nome Pokemon
+            </th>
+
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.PokemonId</td>
+                <td>@item.Nome</td>
+                <td>
+                    <a asp-action="Detalhes" asp-route-id="@item.PokemonId">Detalhes</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

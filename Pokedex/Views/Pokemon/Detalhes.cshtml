@@ -1,0 +1,109 @@
+﻿@model Pokedex.Models.Pokemon
+
+@{
+    ViewData["Title"] = "Detalhes";
+}
+
+<h1>Detalhes</h1>
+
+<div>
+    <h4>Pokemon</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Sprite
+        </dt>
+        <dd class="col-sm-10">
+            <img src="@Url.Content(Model.Url_Sprite)" alt="Sprite Frontal" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Categoria)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BaseExperiencia)
+        </dt>
+        <dd class="col-sm-10">
+            Base De Experiência
+        </dd>
+        <dt class="col-sm-2">
+            Peso
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Peso) Kg
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Altura)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Altura) cm
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tipo1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tipo2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tipo2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Habilidade1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Habilidade1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Habilidade2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Habilidade2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movimento1)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movimento1)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movimento2)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movimento2)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movimento3)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movimento3)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movimento4)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movimento4)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PokemonId">Edit</a> |
+    <a asp-action="Visualizar">Voltar a Lista de Pokémons</a>
+</div>
