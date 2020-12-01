@@ -24,7 +24,5 @@ namespace Pokedex.Models
         public string Movimento4 { get; set; }
         public string Url_Pokemon { get; set; }
         public string Url_Sprite { get; set; }
-
-
     }
 }
