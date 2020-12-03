@@ -1,10 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pokedex.Dados.EntityFramework.Configuracao;
 using Pokedex.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Pokedex.Dados.EntityFramework.Comum
 {
