@@ -28,11 +28,17 @@ namespace Pokedex.Controllers
 
         [HttpPost]
         public IActionResult Create(Usuario objeto)
-        { 
+        {
             var db = new Contexto();
-            db.Usuario.Add(objeto);
-            db.SaveChanges();
-            return RedirectToAction("Visualizar");
+            List<Usuario> users = db.Usuario.ToList();
+            Usuario user = users.Find(a => a.UsuarioAcesso == objeto.UsuarioAcesso);
+            if (user != null)
+            {
+                db.Usuario.Add(objeto);
+                db.SaveChanges();
+                return RedirectToAction("Visualizar");
+            }
+            return RedirectToAction("Create");
         }
         public IActionResult Delete(int id)
         {

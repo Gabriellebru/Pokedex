@@ -1,10 +1,21 @@
-﻿@{
+﻿@model Pokedex.Models.Usuario
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center" style="align-content:center; align-items:center;">
-    <h1 class="display-4">Pokédex</h1>
-    <a class="btn btn-outline-success" href="/Pokemon/Visualizar">Lista de Pokémons</a>
-    <a class="btn btn-outline-primary" href="/Usuario/Visualizar">Lista de Usuários</a>
-</div>
+    <div class="text-center" style="align-content:center; align-items:center;">
+        <h1 class="display-4">Pokédex Login</h1><br />
+        <center>
+            <form asp-action="Login" style="width:250px;">
+                <input asp-for="UsuarioAcesso" class="form-control"/><br />
+                <input asp-for="SenhaAcesso" class="form-control" /><br />
+                <button type="submit" class="btn btn-outline-success">Entrar</button>
+                <a class="btn btn-outline-primary" href="/Home/Cadastro">Cadastrar</a>
+            </form>
+        </center>
+    <!--
+        <a class="btn btn-outline-success" href="/Pokemon/Visualizar">Lista de Pokémons</a>
+        <a class="btn btn-outline-primary" href="/Usuario/Visualizar">Lista de Usuários</a>
+        -->
+    </div>
 
