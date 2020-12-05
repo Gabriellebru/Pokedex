@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Pokedex.Dados.EntityFramework.Comum;
 using Pokedex.Models;

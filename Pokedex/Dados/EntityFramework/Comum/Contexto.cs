@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Pokedex.Dados.EntityFramework.Configuracao;
 using Pokedex.Models;
 
