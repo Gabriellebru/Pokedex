@@ -14,7 +14,10 @@
             Sprite
         </dt>
         <dd class="col-sm-10">
-            <img height="200"src="@Url.Content(Model.Url_Sprite)" alt="Sprite Frontal" />
+            <img height="200"src="@Url.Content(Model.Url_Sprite_front_default)" alt="Sprite Frontal Default" />
+            <img height="200"src="@Url.Content(Model.Url_Sprite_back_default)" alt="Sprite Frontal Default" />
+            <img height="200"src="@Url.Content(Model.Url_Sprite_front_female)" alt="Sprite Frontal Feminino" />
+            <img height="200"src="@Url.Content(Model.Url_Sprite_back_female)" alt="Sprite Frontal Masculino" />
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)

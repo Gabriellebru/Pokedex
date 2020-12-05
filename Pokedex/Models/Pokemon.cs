@@ -19,6 +19,9 @@ namespace Pokedex.Models
         public string Movimento3 { get; set; }
         public string Movimento4 { get; set; }
         public string Url_Pokemon { get; set; }
-        public string Url_Sprite { get; set; }
+        public string Url_Sprite_front_default { get; set; }
+        public string Url_Sprite_back_default { get; set; }
+        public string Url_Sprite_front_female { get; set; }
+        public string Url_Sprite_back_female { get; set; }
     }
 }
