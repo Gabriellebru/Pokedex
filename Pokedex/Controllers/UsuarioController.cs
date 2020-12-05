@@ -5,11 +5,11 @@ using Microsoft.AspNetCore.Mvc;
 using Pokedex.Dados.EntityFramework.Comum;
 using Pokedex.Models;
 
-
 namespace Pokedex.Controllers
 {
     public class UsuarioController : Controller
     {
+        #region Views
         public IActionResult Visualizar()
         {
             var BancoDados = new Contexto();
@@ -25,7 +25,16 @@ namespace Pokedex.Controllers
         {
             return View();
         }
+        public IActionResult Detalhes(int id)
+        {
+            var db = new Contexto();
+            Usuario usuario = db.Usuario.Find(id);
+            usuario.Pokemon = db.Pokemon.Find(usuario.PokemonId);
+            return View(usuario);
+        }
+        #endregion
 
+        #region HttpPost
         [HttpPost]
         public IActionResult Create(Usuario objeto)
         {
@@ -34,17 +43,20 @@ namespace Pokedex.Controllers
             Usuario user = users.Find(a => a.UsuarioAcesso == objeto.UsuarioAcesso);
             if (user != null)
             {
-                db.Usuario.Add(objeto);
-                db.SaveChanges();
-                return RedirectToAction("Visualizar");
+                return RedirectToAction("Criar");
             }
-            return RedirectToAction("Create");
+            db.Usuario.Add(objeto);
+            db.SaveChanges();
+            return RedirectToAction("Visualizar");
         }
+        #endregion
+        
+        #region funções
         public IActionResult Delete(int id)
         {
             var db = new Contexto();
 
-            List<Usuario> usuarios  = db.Usuario.ToList();
+            List<Usuario> usuarios = db.Usuario.ToList();
             var usuario = usuarios.Find(a => a.UsuarioID == id);
             if (usuario == null)
             {
@@ -55,14 +67,6 @@ namespace Pokedex.Controllers
             return RedirectToAction("Visualizar");
         }
 
-        public IActionResult Detalhes(int id)
-        {
-            var db = new Contexto();
-            Usuario usuario = db.Usuario.Find(id);
-            usuario.Pokemon = db.Pokemon.Find(usuario.PokemonId);
-            return View(usuario);
-        }
-
         /*
         public IActionResult Edit(Usuario usuario)
         {
@@ -71,5 +75,6 @@ namespace Pokedex.Controllers
             return View(usuario);
         }
         */
+        #endregion
     }
 }

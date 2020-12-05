@@ -49,13 +49,13 @@ namespace Pokedex.Controllers
             var db = new Contexto();
             List<Usuario> users = db.Usuario.ToList();
             Usuario user = users.Find(a => a.UsuarioAcesso == objeto.UsuarioAcesso);
-            if (user == null)
+            if (user != null)
             {
-                db.Usuario.Add(objeto);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Cadastro");
             }
-            return RedirectToAction("Cadastro");
+            db.Usuario.Add(objeto);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         public IActionResult Privacy()
         {

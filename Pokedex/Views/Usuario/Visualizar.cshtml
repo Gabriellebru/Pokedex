@@ -7,7 +7,7 @@
 <h1>Visualizar</h1>
 
 <p>
-    <a asp-action="Criar">Criar Novo</a>
+    <a class="btn btn-outline-primary" asp-action="Criar">Criar Novo</a>
 </p>
 <table class="table">
     <thead>
@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Pokemon.Nome)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UsuarioID">Editar</a> |
-                <a asp-action="Detalhes" asp-route-id="@item.UsuarioID">Detalhes</a> |
-                <a asp-action="Delete" asp-route-id="@item.UsuarioID" asp-route-usuarioID="@item.UsuarioID">Delete</a>
+                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.UsuarioID">Editar</a> &nbsp;
+                <a class="btn btn-outline-primary" asp-action="Detalhes" asp-route-id="@item.UsuarioID">Detalhes</a> &nbsp;
+                <a class="btn btn-outline-primary" asp-action="Delete" asp-route-id="@item.UsuarioID" asp-route-usuarioID="@item.UsuarioID">Delete</a>
             </td>
         </tr>
 }

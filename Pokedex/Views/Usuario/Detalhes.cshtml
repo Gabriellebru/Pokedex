@@ -4,10 +4,13 @@
     ViewData["Title"] = "Detalhes";
 }
 
-<h1>Detalhes</h1>
+<h3>Meu Perfil</h3>
 
 <div>
-    <h4>Usuario</h4>
+    <h4>Bem vindo @Model.Nome</h4>
+<div>
+    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.UsuarioID">Editar informações</a>
+</div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -35,14 +38,13 @@
             @Html.DisplayFor(model => model.PokemonId)
         </dd>
         <dt class="col-sm-2">
-            Nome Pokemon
+            Seu Pokemon
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Pokemon.Nome)
         </dd>
+        <dd>
+            @Html.ActionLink("Detalhes do Pokemon", "Detalhes", "Pokemon", new { id = Model.Pokemon.PokemonId})
+        </dd>
     </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.UsuarioID">Editar</a> |
-    <a asp-action="Visualizar">Voltar a Lista de Usuários</a>
 </div>
