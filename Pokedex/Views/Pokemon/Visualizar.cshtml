@@ -1,7 +1,12 @@
 ﻿@model List<Pokedex.Models.Pokemon>
+@{
+    ViewData["URL"] = ViewBag.urlsprite;
+    ViewData["Nome"] = "Gabrielle";
+}
 
-<h2>Lista de Pokémons</h2>
 
+<h2>Pokedex (NatinalDex)</h2>
+@Html.ActionLink("Meu Perfil", "Detalhes", "Usuario", new { id = ViewBag.usuarioid }, new { @class = "btn btn-outline-primary" })
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -26,15 +31,25 @@
                     @item.PokemonId
                 </td>
                 <td>
-                    <img height="60" src="@item.Url_Sprite_front_default" alt="Sprite Frontal"/>
+                    @if (item.Url_Sprite_front_default == null)
+                    {
+                    <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                    }
+                    else
+                    {
+                        <img height="60" src="@item.Url_Sprite_front_default" alt="Sprite Frontal" />
+                    }
                 </td>
                 <td>
                     @item.Nome
                 </td>
                 <td>
-                    <a class="btn btn-outline-primary" asp-action="Detalhes" asp-route-id="@item.PokemonId">Detalhes</a>
+                    @Html.ActionLink("Detalhes", "Detalhes", "Pokemon", new { id = item.PokemonId, usuarioid = ViewBag.usuarioid }, new { @class = "btn btn-outline-primary" })
                 </td>
-            </tr>        
+            </tr>
+
         }
     </tbody>
 </table>

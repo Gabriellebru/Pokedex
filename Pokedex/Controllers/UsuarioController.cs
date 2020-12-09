@@ -28,7 +28,8 @@ namespace Pokedex.Controllers
         public IActionResult Detalhes(int id)
         {
             var db = new Contexto();
-            Usuario usuario = db.Usuario.Find(id);
+            List<Usuario> usuarios = db.Usuario.ToList();
+            Usuario usuario = usuarios.Find(a => a.UsuarioID == id);
             usuario.Pokemon = db.Pokemon.Find(usuario.PokemonId);
             return View(usuario);
         }
@@ -67,14 +68,27 @@ namespace Pokedex.Controllers
             return RedirectToAction("Visualizar");
         }
 
-        /*
+        public IActionResult Editar(int id)
+        {
+            Contexto db = new Contexto();
+            List<Usuario> usuarios = db.Usuario.ToList();
+            Usuario usuario = usuarios.Find(a => a.UsuarioID == id);
+            ViewBag.pokemons = db.Pokemon.ToList();
+            return View(usuario);
+        }
+
         public IActionResult Edit(Usuario usuario)
         {
             var db = new Contexto();
-            var usuario = db.Usuario.Find(usuarioAcesso);
-            return View(usuario);
+            if (usuario.UsuarioAcesso == null || usuario.UsuarioID == null || usuario.Nome == null || usuario.SenhaAcesso == null)
+            {
+                return RedirectToAction("Editar", new { id = usuario.UsuarioID });
+            }
+            db.Usuario.Update(usuario);
+            db.SaveChanges();
+            return RedirectToAction("Visualizar");
         }
-        */
+        
         #endregion
     }
 }

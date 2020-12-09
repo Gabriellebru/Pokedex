@@ -5,7 +5,10 @@
 }
 
 <h3>Detalhes</h3>
-
+<div>
+    @Html.ActionLink("Meu Perfil", "Detalhes", "Usuario", new { id = ViewBag.usuarioid }, new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("Pokédex", "Visualizar", "Pokemon", new { id = ViewBag.usuarioid }, new { @class = "btn btn-outline-primary" })
+</div>
 <div>
     <h4>@Model.Nome</h4>
     <hr />
@@ -106,7 +109,5 @@
 
     </dl>
 </div>
-<div>
-    <a class="btn btn-outline-primary" asp-action="Visualizar">Voltar a Lista de Pokémons</a>
-</div>
+
  

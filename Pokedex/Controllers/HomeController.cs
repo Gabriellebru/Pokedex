@@ -13,6 +13,7 @@ namespace Pokedex.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+
         static Usuario usuario = new Usuario();
         public HomeController(ILogger<HomeController> logger)
         {
@@ -21,12 +22,12 @@ namespace Pokedex.Controllers
 
         public IActionResult Login(Usuario user)
         {
-            var db = new Contexto();
+            Contexto db = new Contexto();
             List<Usuario> usuarios = db.Usuario.ToList();
             usuario = usuarios.Find(a => a.UsuarioAcesso == user.UsuarioAcesso && a.SenhaAcesso == user.SenhaAcesso);
             if (usuario != null)
             {
-                return RedirectToAction("Detalhes", "Usuario", new { id = usuario.UsuarioID });
+                return RedirectToAction("Visualizar", "Pokemon", new { id = usuario.UsuarioID });
             }
             return RedirectToAction("Index");
         }

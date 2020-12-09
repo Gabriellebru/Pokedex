@@ -8,16 +8,16 @@
     <center>
         <form asp-action="Login" style="width:250px;">
             <input asp-for="UsuarioAcesso" placeholder="Usuario de acesso" class="form-control" /><br />
-            <input asp-for="SenhaAcesso" placeholder="Senha de acesso" class="form-control" /><br />
+            <input type="password" asp-for="SenhaAcesso" placeholder="Senha de acesso" class="form-control" /><br />
             <button type="submit" class="btn btn-outline-success">Entrar</button>
-            <a class="btn btn-outline-primary" href="/Home/Cadastro">Cadastrar</a>
+            @Html.ActionLink("Cadastrar","Cadastro","Home",null,new {@class="btn btn-outline-primary" })
         </form>
     </center>
     <div>
         <br /><br />
         <p>Area de testes</p>
-        <a class="btn btn-outline-success" href="/Pokemon/Visualizar">Lista de Pokémons</a>
-        <a class="btn btn-outline-primary" href="/Usuario/Visualizar">Lista de Usuários</a>
+        @Html.ActionLink("Lista de Pokémons", "Visualizar", "Pokemon", new { id = 9 }, new { @class= "btn btn-outline-success"})
+        @Html.ActionLink("Lista de Usuarios", "Visualizar","Usuario", null, new {@class = "btn btn-outline-primary"})
     </div>
 </div>
 

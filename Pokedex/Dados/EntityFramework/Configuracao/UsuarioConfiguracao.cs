@@ -14,11 +14,11 @@ namespace Pokedex.Dados.EntityFramework.Configuracao
 
             builder.HasKey("UsuarioID");
 
-            builder.Property(t => t.UsuarioID).HasColumnName("UsuarioID").HasColumnType("int");
+            builder.Property(t => t.UsuarioID).HasColumnName("UsuarioID").HasColumnType("int").IsRequired();
             builder.Property(t => t.Nome).HasColumnName("Nome").HasColumnType("varchar(100)").IsRequired();
             builder.Property(t => t.UsuarioAcesso).HasColumnName("UsuarioAcesso").HasColumnType("varchar(100)").IsRequired();
             builder.Property(t => t.SenhaAcesso).HasColumnName("SenhaAcesso").HasColumnType("char(8)").IsRequired();
-            builder.Property(t => t.PokemonId).HasColumnName("PokemonId").HasColumnType("int");
+            builder.Property(t => t.PokemonId).HasColumnName("PokemonId").HasColumnType("int").IsRequired();
 
         }
     }
