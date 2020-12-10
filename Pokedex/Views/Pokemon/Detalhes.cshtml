@@ -5,22 +5,25 @@
 }
 
 <h3>Detalhes</h3>
+<br />
+
 <div>
     @Html.ActionLink("Meu Perfil", "Detalhes", "Usuario", new { id = ViewBag.usuarioid }, new { @class = "btn btn-outline-primary" })
-    @Html.ActionLink("Pokédex", "Visualizar", "Pokemon", new { id = ViewBag.usuarioid }, new { @class = "btn btn-outline-primary" })
+    @Html.ActionLink("Pokédex", "Visualizar", "Pokemon", new { id = ViewBag.usuarioid }, new { @class = "btn btn-outline-danger" })
 </div>
+
 <div>
-    <h4>@Model.Nome</h4>
     <hr />
+<h4>@Model.Nome</h4>
     <dl class="row">
         <dt class="col-sm-2">
             Sprite
         </dt>
         <dd class="col-sm-10">
-            <img height="200"src="@Url.Content(Model.Url_Sprite_front_default)" alt="Sprite Frontal Default" />
-            <img height="200"src="@Url.Content(Model.Url_Sprite_back_default)" alt="Sprite Frontal Default" />
-            <img height="200"src="@Url.Content(Model.Url_Sprite_front_female)" alt="Sprite Frontal Feminino" />
-            <img height="200"src="@Url.Content(Model.Url_Sprite_back_female)" alt="Sprite Frontal Masculino" />
+            <img height="200" src="@Url.Content(Model.Url_Sprite_front_default)" alt="Sprite Frontal Default" />
+            <img height="200" src="@Url.Content(Model.Url_Sprite_back_default)" alt="Sprite Frontal Default" />
+            <img height="200" src="@Url.Content(Model.Url_Sprite_front_female)" alt="Sprite Frontal Feminino" />
+            <img height="200" src="@Url.Content(Model.Url_Sprite_back_female)" alt="Sprite Frontal Feminino" />
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nome)
@@ -110,4 +113,3 @@
     </dl>
 </div>
 
- 

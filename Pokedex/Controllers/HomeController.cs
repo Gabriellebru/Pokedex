@@ -48,12 +48,6 @@ namespace Pokedex.Controllers
         public IActionResult Cadastrar(Usuario objeto)
         {
             var db = new Contexto();
-            List<Usuario> users = db.Usuario.ToList();
-            Usuario user = users.Find(a => a.UsuarioAcesso == objeto.UsuarioAcesso);
-            if (user != null)
-            {
-                return RedirectToAction("Cadastro");
-            }
             db.Usuario.Add(objeto);
             db.SaveChanges();
             return RedirectToAction("Index");

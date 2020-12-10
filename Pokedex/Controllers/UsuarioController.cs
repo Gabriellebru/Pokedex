@@ -23,11 +23,13 @@ namespace Pokedex.Controllers
         }
         public IActionResult Criar()
         {
+            Contexto db = new Contexto();
+            ViewBag.Pokemons = db.Pokemon.ToList();
             return View();
         }
         public IActionResult Detalhes(int id)
         {
-            var db = new Contexto();
+            Contexto db = new Contexto();
             List<Usuario> usuarios = db.Usuario.ToList();
             Usuario usuario = usuarios.Find(a => a.UsuarioID == id);
             usuario.Pokemon = db.Pokemon.Find(usuario.PokemonId);
@@ -39,10 +41,8 @@ namespace Pokedex.Controllers
         [HttpPost]
         public IActionResult Create(Usuario objeto)
         {
-            var db = new Contexto();
-            List<Usuario> users = db.Usuario.ToList();
-            Usuario user = users.Find(a => a.UsuarioAcesso == objeto.UsuarioAcesso);
-            if (user != null)
+            Contexto db = new Contexto();
+            if(objeto.Nome == null || objeto.SenhaAcesso == null || objeto.UsuarioAcesso == null || objeto.PokemonId == null)
             {
                 return RedirectToAction("Criar");
             }
@@ -55,7 +55,7 @@ namespace Pokedex.Controllers
         #region funções
         public IActionResult Delete(int id)
         {
-            var db = new Contexto();
+            Contexto db = new Contexto();
 
             List<Usuario> usuarios = db.Usuario.ToList();
             var usuario = usuarios.Find(a => a.UsuarioID == id);

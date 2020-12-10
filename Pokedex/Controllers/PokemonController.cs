@@ -19,12 +19,8 @@ namespace Pokedex.Controllers
             {
                 return RedirectToAction("Index","Home");
             }
-            ViewBag.usuarioid = user.UsuarioID;
             List<Pokemon> Pokemons = BancoDados.Pokemon.ToList();
-            Pokemon pokemon = Pokemons.Find(a => a.PokemonId == user.PokemonId);
-            ViewBag.urlsprite = pokemon.Url_Sprite_front_default;
-            ViewBag.pokemonid = user.PokemonId;
-
+            ViewBag.Usuario = user;
             return View(Pokemons);
         }
         public IActionResult Detalhes(int id, int usuarioid)

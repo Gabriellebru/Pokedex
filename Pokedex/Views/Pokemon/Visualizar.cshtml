@@ -1,12 +1,12 @@
 ﻿@model List<Pokedex.Models.Pokemon>
 @{
-    ViewData["URL"] = ViewBag.urlsprite;
-    ViewData["Nome"] = "Gabrielle";
+    ViewData["URL"] = ViewBag.Usuario.Pokemon.Url_Sprite_front_default;
+    ViewData["Nome"] = ViewBag.Usuario.Nome;
 }
 
 
 <h2>Pokedex (NatinalDex)</h2>
-@Html.ActionLink("Meu Perfil", "Detalhes", "Usuario", new { id = ViewBag.usuarioid }, new { @class = "btn btn-outline-primary" })
+@Html.ActionLink("Meu Perfil", "Detalhes", "Usuario", new { id = ViewBag.Usuario.UsuarioID }, new { @class = "btn btn-outline-primary" })
 <table class="table table-striped table-hover">
     <thead>
         <tr>
