@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using Microsoft.Extensions.Logging;
 using Pokedex.Dados.EntityFramework.Comum;
 using Pokedex.Models;
@@ -18,7 +19,7 @@ namespace Pokedex.Controllers
         {
             _logger = logger;
         }
-
+        [HttpPost]
         public IActionResult Login(Usuario user)
         {
             Contexto db = new Contexto();
@@ -28,10 +29,10 @@ namespace Pokedex.Controllers
             {
                 return RedirectToAction("Visualizar", "Pokemon", new { id = usuario.UsuarioID });
             }
-            return RedirectToAction("Index");
+            return View(user);
         }
 
-        public IActionResult Index()
+        public IActionResult Login()
         {
             return View();
         }
@@ -44,12 +45,17 @@ namespace Pokedex.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(Usuario objeto)
+        public IActionResult Cadastro(Usuario objeto)
         {
             var db = new Contexto();
+            if(objeto.Nome == null || objeto.UsuarioAcesso == null || objeto.SenhaAcesso == null || objeto.PokemonId == null)
+            {
+                ViewBag.Pokemons = db.Pokemon.ToList();
+                return View(objeto);
+            }
             db.Usuario.Add(objeto);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Login");
         }
         public IActionResult Privacy()
         {

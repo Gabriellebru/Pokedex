@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Cadastrar">
+        <form asp-action="Cadastro">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -30,13 +30,14 @@
             <div class="form-group">
                 <label asp-for="PokemonId" class="control-label"></label>
                 <select asp-for="PokemonId" class="form-control" id="selectpokemon">
-                    <option selected disabled hidden>Selecione um Pokemon</option>                        
+                    <option selected disabled hidden>Selecione um Pokemon</option>
                     @foreach (Pokemon pokemon in ViewBag.Pokemons)
                     {
                         <option value="@pokemon.PokemonId">@pokemon.Nome</option>
                     }
                 </select>
-                <br />
+            </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Criar" class="btn btn-primary" />
             </div>

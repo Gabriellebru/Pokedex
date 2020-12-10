@@ -7,10 +7,12 @@
     <h1 class="display-4"><b>Pokédex Login</b></h1><br />
     <center>
         <form asp-action="Login" style="width:250px;">
-            <input asp-for="UsuarioAcesso" placeholder="Usuario de acesso" class="form-control" /><br />
-            <input type="password" asp-for="SenhaAcesso" placeholder="Senha de acesso" class="form-control" /><br />
+            <input asp-for="UsuarioAcesso" placeholder="Usuario de acesso" class="form-control" />
+            <span asp-validation-for="UsuarioAcesso" class="text-danger"></span><br />
+            <input type="password" asp-for="SenhaAcesso" placeholder="Senha de acesso" class="form-control" />
+            <span asp-validation-for="SenhaAcesso" class="text-danger"></span><br>
             <button type="submit" class="btn btn-outline-success">Entrar</button>
-            @Html.ActionLink("Cadastrar","Cadastro","Home",null,new {@class="btn btn-outline-primary" })
+            @Html.ActionLink("Cadastrar", "Cadastro", "Home", null, new { @class = "btn btn-outline-primary" })
         </form>
     </center>
     <div>
