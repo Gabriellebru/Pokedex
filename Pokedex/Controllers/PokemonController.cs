@@ -12,14 +12,13 @@ namespace Pokedex.Controllers
         Usuario user = new Usuario();
         public IActionResult Visualizar(int id)
         {
-            var BancoDados = new Contexto();
-            List<Usuario> usuarios = BancoDados.Usuario.ToList();
-            user = usuarios.Find(a => a.UsuarioID == id);
+            Contexto db = new Contexto();
+            user = db.Usuario.Find(id);
             if (user == null)
             {
                 return RedirectToAction("Index","Home");
             }
-            List<Pokemon> Pokemons = BancoDados.Pokemon.ToList();
+            List<Pokemon> Pokemons = db.Pokemon.ToList();
             ViewBag.Usuario = user;
             return View(Pokemons);
         }
@@ -28,8 +27,9 @@ namespace Pokedex.Controllers
             var db = new Contexto();
             Pokemon pokemon = db.Pokemon.Find(id);
             pokemon.Altura = pokemon.Altura * 10;
-            List<Usuario> usuarios = db.Usuario.ToList();
-            ViewBag.usuarioid = usuarios.Find(a => a.UsuarioID == usuarioid).UsuarioID;
+            user = db.Usuario.Find(usuarioid);
+            user.Pokemon = db.Pokemon.Find(user.PokemonId);
+            ViewBag.Usuario = user;
             return View(pokemon);
         }
     }

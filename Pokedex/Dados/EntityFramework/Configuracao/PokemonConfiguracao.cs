@@ -9,8 +9,6 @@ namespace Pokedex.Dados.EntityFramework.Configuracao
     {
         public void Configure(EntityTypeBuilder<Pokemon> builder)
         {
-            //Definição do nome e schema da tabela
-            
             builder.ToTable("Pokemons","PG");
             builder.HasKey("PokemonId");
             builder.Property(t => t.PokemonId).HasColumnName("PokemonID").HasColumnType("int");

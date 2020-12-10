@@ -2,20 +2,25 @@
 
 @{
     ViewData["Title"] = "Detalhes";
+    ViewData["URL"] = Model.Pokemon.Url_Sprite_front_default;
+    ViewData["Nome"] = Model.Nome;
+    ViewData["UsuarioID"] = Model.UsuarioID;
 }
 
 <h3>Meu Perfil</h3>
 
 <div>
     <h4>Bem vindo @Model.Nome</h4>
-<div>
-    @Html.ActionLink("Pokédex", "Visualizar", "Pokemon", new { id = Model.UsuarioID},new { @class = "btn btn-outline-danger"})
-    @Html.ActionLink("Meu Pokémon", "Detalhes", "Pokemon", new { id = Model.PokemonId, usuarioid = Model.UsuarioID },new { @class = "btn btn-outline-success"})
-    @Html.ActionLink("Alterar meus dados", "Editar", "Usuario", new { id =Model.UsuarioID}, new { @class="btn btn-outline-primary"})
-    <div class="float-right">
-        <img src="@Model.Pokemon.Url_Sprite_front_default" width="300" style="margin-top: 5%" />
+    <div>
+        @Html.ActionLink("Pokédex", "Visualizar", "Pokemon", new { id = Model.UsuarioID }, new { @class = "btn btn-outline-danger" })
+        @Html.ActionLink("Meu Pokémon", "Detalhes", "Pokemon", new { id = Model.PokemonId, usuarioid = Model.UsuarioID }, new { @class = "btn btn-outline-success" })
+        @Html.ActionLink("Alterar meus dados", "Editar", "Usuario", new { id = Model.UsuarioID }, new { @class = "btn btn-outline-primary" })
+        <div class="float-right">
+            <a href ="@Url.ActionLink("Detalhes","Pokemon",new {id = Model.PokemonId, usuarioid = Model.UsuarioID })">
+                <img src="@Model.Pokemon.Url_Sprite_front_default" width="300" style="margin-top: 5%" />
+            </a>
+        </div>
     </div>
-</div>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">

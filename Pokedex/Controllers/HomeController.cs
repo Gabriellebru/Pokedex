@@ -13,7 +13,6 @@ namespace Pokedex.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         static Usuario usuario = new Usuario();
         public HomeController(ILogger<HomeController> logger)
         {

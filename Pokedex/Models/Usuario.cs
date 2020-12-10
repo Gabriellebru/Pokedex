@@ -8,7 +8,6 @@ namespace Pokedex.Models
         public string UsuarioAcesso { get; set; }
         public string SenhaAcesso { get; set; }
         public int? PokemonId { get; set; }
-
         public Pokemon Pokemon { get; set; }
     }
 }

@@ -10,14 +10,14 @@ namespace Pokedex.Controllers
     public class UsuarioController : Controller
     {
         #region Views
+        static Usuario user = new Usuario();
         public IActionResult Visualizar()
         {
-            var BancoDados = new Contexto();
-            List<Pokemon> pokemons = BancoDados.Pokemon.ToList();
-            var Usuarios = BancoDados.Usuario.ToList();
+            Contexto db = new Contexto();
+            List<Usuario> Usuarios = db.Usuario.ToList();
             foreach (Usuario usuario in Usuarios)
             {
-                usuario.Pokemon = pokemons.Find(a => a.PokemonId == usuario.PokemonId);
+                usuario.Pokemon = db.Pokemon.Find(usuario.PokemonId);
             }
             return View(Usuarios);
         }
@@ -30,10 +30,16 @@ namespace Pokedex.Controllers
         public IActionResult Detalhes(int id)
         {
             Contexto db = new Contexto();
-            List<Usuario> usuarios = db.Usuario.ToList();
-            Usuario usuario = usuarios.Find(a => a.UsuarioID == id);
-            usuario.Pokemon = db.Pokemon.Find(usuario.PokemonId);
-            return View(usuario);
+            user = db.Usuario.Find(id);
+            user.Pokemon = db.Pokemon.Find(user.PokemonId);
+            return View(user);
+        }
+        public IActionResult Editar(int id)
+        {
+            Contexto db = new Contexto();
+            user = db.Usuario.Find(id);
+            ViewBag.pokemons = db.Pokemon.ToList();
+            return View(user);
         }
         #endregion
 
@@ -56,26 +62,16 @@ namespace Pokedex.Controllers
         public IActionResult Delete(int id)
         {
             Contexto db = new Contexto();
-
-            List<Usuario> usuarios = db.Usuario.ToList();
-            var usuario = usuarios.Find(a => a.UsuarioID == id);
-            if (usuario == null)
+            user = db.Usuario.Find(id);
+            if (user == null)
             {
                 throw new ArgumentNullException("Usuario", "O nome de usuário " + id + " não foi encontrado.");
             }
-            db.Usuario.Remove(usuario);
+            db.Usuario.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Visualizar");
         }
 
-        public IActionResult Editar(int id)
-        {
-            Contexto db = new Contexto();
-            List<Usuario> usuarios = db.Usuario.ToList();
-            Usuario usuario = usuarios.Find(a => a.UsuarioID == id);
-            ViewBag.pokemons = db.Pokemon.ToList();
-            return View(usuario);
-        }
 
         public IActionResult Edit(Usuario usuario)
         {
@@ -86,7 +82,7 @@ namespace Pokedex.Controllers
             }
             db.Usuario.Update(usuario);
             db.SaveChanges();
-            return RedirectToAction("Visualizar");
+            return RedirectToAction("Detalhes",new { id = usuario.UsuarioID});
         }
         
         #endregion

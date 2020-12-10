@@ -2,6 +2,7 @@
 @{
     ViewData["URL"] = ViewBag.Usuario.Pokemon.Url_Sprite_front_default;
     ViewData["Nome"] = ViewBag.Usuario.Nome;
+    ViewData["UsuarioID"] = ViewBag.Usuario.UsuarioID;
 }
 
 
@@ -46,7 +47,7 @@
                     @item.Nome
                 </td>
                 <td>
-                    @Html.ActionLink("Detalhes", "Detalhes", "Pokemon", new { id = item.PokemonId, usuarioid = ViewBag.usuarioid }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("Detalhes", "Detalhes", "Pokemon", new { id = item.PokemonId, usuarioid = ViewBag.Usuario.UsuarioID }, new { @class = "btn btn-outline-primary" })
                 </td>
             </tr>
 

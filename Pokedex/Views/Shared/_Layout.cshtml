@@ -24,11 +24,15 @@
                         @if (ViewData["Nome"] != null)
                         {
                             <li style="margin-top: 20px; font-size:24px">
-                                <b>@ViewData["Nome"]</b>&nbsp
+                                <b>@Html.ActionLink($"{ViewData["Nome"]}", "Detalhes", "Usuario", new { id = ViewData["UsuarioID"] }, new { @style = "text-decoration: none; color:white;" })</b>
+                                &nbsp
                             </li>
 
+
                             <li>
+                                <a href="@Url.ActionLink("Detalhes", "Usuario", new { id = ViewData["UsuarioID"] })">
                                 <img src="@ViewData["URL"]" width="80" style="border-radius: 50%; background-color:white" />
+                                </a>
                             </li>
                         }
                     </ul>
@@ -44,7 +48,7 @@
 
     <footer class="border-top footer text-muted" style="background-color: red; color: white;">
         <div class="container" style="background-color:red; color: white;">
-            &copy; 2020 - Pokedex - <a asp-area="" asp-controller="Home" style="text-decoration:none; color:white;" asp-action="Privacy">Privacy</a>
+            &copy; 2020 - Pokedex 
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

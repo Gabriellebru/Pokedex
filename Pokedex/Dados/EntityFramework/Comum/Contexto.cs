@@ -14,7 +14,6 @@ namespace Pokedex.Dados.EntityFramework.Comum
         {
             modelBuilder.ApplyConfiguration(new PokemonConfiguracao());
             modelBuilder.ApplyConfiguration(new UsuarioConfiguracao());
-
             base.OnModelCreating(modelBuilder);
         }
 

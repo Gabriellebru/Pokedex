@@ -9,11 +9,8 @@ namespace Pokedex.Dados.EntityFramework.Configuracao
     {
         public void Configure(EntityTypeBuilder<Usuario> builder)
         {
-            //Definição do nome e schema da tabela
             builder.ToTable("Usuario", "PG");
-
             builder.HasKey("UsuarioID");
-
             builder.Property(t => t.UsuarioID).HasColumnName("UsuarioID").HasColumnType("int").IsRequired();
             builder.Property(t => t.Nome).HasColumnName("Nome").HasColumnType("varchar(100)").IsRequired();
             builder.Property(t => t.UsuarioAcesso).HasColumnName("UsuarioAcesso").HasColumnType("varchar(100)").IsRequired();
