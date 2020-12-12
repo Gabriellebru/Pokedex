@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Pokedex.Dados.EntityFramework.Comum;
 using Pokedex.Models;
 using static Pokedex.Utilidades;
-
+ 
 namespace Pokedex.Controllers
 {
     public class UsuarioController : Controller
