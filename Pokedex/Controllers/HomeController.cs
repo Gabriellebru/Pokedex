@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using Microsoft.Extensions.Logging;
 using Pokedex.Dados.EntityFramework.Comum;
 using Pokedex.Models;
+using static Pokedex.Utilidades;
 
 namespace Pokedex.Controllers
 {
@@ -50,7 +51,7 @@ namespace Pokedex.Controllers
         public IActionResult Cadastro()
         {
             var db = new Contexto();
-            ViewBag.Pokemons = db.Pokemon.ToList();
+            ViewBag.Pokemons = primeiraLetraMaiuscula(db.Pokemon.ToList());
             return View();
         }
 

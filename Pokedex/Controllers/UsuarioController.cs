@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Pokedex.Dados.EntityFramework.Comum;
 using Pokedex.Models;
+using static Pokedex.Utilidades;
 
 namespace Pokedex.Controllers
 {
@@ -18,24 +19,28 @@ namespace Pokedex.Controllers
             foreach (Usuario usuario in Usuarios)
             {
                 usuario.Pokemon = db.Pokemon.Find(usuario.PokemonId);
+                usuario.Nome = primeiraLetraMaiuscula(usuario.Nome);
+                usuario.Pokemon.Nome = primeiraLetraMaiuscula(usuario.Pokemon.Nome);
             }
             return View(Usuarios);
         }
         public IActionResult Criar()
         {
             Contexto db = new Contexto();
-            ViewBag.Pokemons = db.Pokemon.ToList();
+            List<Pokemon> pokemons = db.Pokemon.ToList();
+            ViewBag.Pokemons = primeiraLetraMaiuscula(pokemons);
             return View();
         }
         public IActionResult Detalhes(int id)
         {
             Contexto db = new Contexto();
             user = db.Usuario.Find(id);
-            if(user == null)
+            if (user == null)
             {
-                return RedirectToAction("Login","Home");
+                return RedirectToAction("Login", "Home");
             }
             user.Pokemon = db.Pokemon.Find(user.PokemonId);
+            user = primeiraLetraMaiuscula(user);
             return View(user);
         }
         public IActionResult Editar(int id)
@@ -47,11 +52,11 @@ namespace Pokedex.Controllers
                 {
                     return RedirectToAction("Visualizar");
                 }
-            user = db.Usuario.Find(id);
+                user = db.Usuario.Find(id);
 
             }
             user.Pokemon = db.Pokemon.Find(user.PokemonId);
-            ViewBag.pokemons = db.Pokemon.ToList();
+            ViewBag.pokemons = primeiraLetraMaiuscula(db.Pokemon.ToList());
             return View(user);
         }
         #endregion
@@ -61,7 +66,7 @@ namespace Pokedex.Controllers
         public IActionResult Criar(Usuario objeto)
         {
             Contexto db = new Contexto();
-            if(objeto.Nome == null || objeto.SenhaAcesso == null || objeto.UsuarioAcesso == null || objeto.PokemonId == null)
+            if (objeto.Nome == null || objeto.SenhaAcesso == null || objeto.UsuarioAcesso == null || objeto.PokemonId == null)
             {
                 ViewBag.Pokemons = db.Pokemon.ToList();
                 return View(objeto);
@@ -71,7 +76,7 @@ namespace Pokedex.Controllers
             return RedirectToAction("Visualizar");
         }
         #endregion
-        
+
         #region funções
         public IActionResult Delete(int id)
         {
@@ -100,9 +105,9 @@ namespace Pokedex.Controllers
             }
             db.Usuario.Update(usuario);
             db.SaveChanges();
-            return RedirectToAction("Detalhes",new { id = usuario.UsuarioID});
+            return RedirectToAction("Detalhes", new { id = usuario.UsuarioID });
         }
-        
+
         public IActionResult AlterarPokemon(int pokemonId, int usuarioId)
         {
             Contexto db = new Contexto();
@@ -110,7 +115,7 @@ namespace Pokedex.Controllers
             user.PokemonId = pokemonId;
             db.Usuario.Update(user);
             db.SaveChanges();
-            return RedirectToAction("Visualizar","Pokemon",new {id = user.UsuarioID });
+            return RedirectToAction("Visualizar", "Pokemon", new { id = user.UsuarioID });
         }
 
         #endregion

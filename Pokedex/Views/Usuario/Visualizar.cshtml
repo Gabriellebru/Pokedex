@@ -36,7 +36,10 @@
                 @Html.DisplayFor(modelItem => item.UsuarioAcesso)
             </td>
             <td>
-                ************
+                @for (int i = 0; i < item.SenhaAcesso.Length; i++)
+                {
+                    <a>*</a>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Pokemon.Nome)

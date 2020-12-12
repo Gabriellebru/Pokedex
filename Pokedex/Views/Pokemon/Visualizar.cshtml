@@ -35,16 +35,7 @@
                     @item.PokemonId
                 </td>
                 <td>
-                    @if (item.Url_Sprite_front_default == null)
-                    {
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                    }
-                    else
-                    {
-                        <img height="60" src="@item.Url_Sprite_front_default" alt="Sprite Frontal" />
-                    }
+                    <img height="60" src="@item.Url_Sprite_front_default" alt="Sprite Frontal" />
                 </td>
                 <td>
                     @item.Nome
@@ -53,7 +44,7 @@
                     @Html.ActionLink("Detalhes", "Detalhes", "Pokemon", new { id = item.PokemonId, usuarioId = ViewBag.Usuario.UsuarioID }, new { @class = "btn btn-outline-primary" })
                 </td>
                 <td>
-                    @Html.ActionLink("Alterar Pokémon","AlterarPokemon","Usuario",new { pokemonId = item.PokemonId, usuarioId = ViewBag.Usuario.UsuarioID },new  { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("Alterar Pokémon", "AlterarPokemon", "Usuario", new { pokemonId = item.PokemonId, usuarioId = ViewBag.Usuario.UsuarioID }, new { @class = "btn btn-outline-primary" })
 
                 </td>
             </tr>
