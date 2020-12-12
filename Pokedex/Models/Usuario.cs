@@ -6,8 +6,8 @@ namespace Pokedex.Models
     public class Usuario
     {
         public int? UsuarioID { get; set; }
+        [Required(ErrorMessage = "Esse campo é obrigatório")]
         public string Nome { get; set; }
-
         [Required(ErrorMessage ="Esse campo é obrigatório")]
         public string UsuarioAcesso { get; set; }
         [Required(ErrorMessage = "Esse campo é obrigatório")]

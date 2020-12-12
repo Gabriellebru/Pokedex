@@ -31,7 +31,7 @@
 
                             <li>
                                 <a href="@Url.ActionLink("Detalhes", "Usuario", new { id = ViewData["UsuarioID"] })">
-                                <img src="@ViewData["URL"]" width="80" style="border-radius: 50%; background-color:white" />
+                                    <img src="@ViewData["URL"]" width="80" style="border-radius: 50%; background-color:white" />
                                 </a>
                             </li>
                         }
@@ -48,7 +48,12 @@
 
     <footer class="border-top footer text-muted" style="background-color: red; color: white;">
         <div class="container" style="background-color:red; color: white;">
-            &copy; 2020 - Pokedex 
+            <div class="float-left">
+                &copy; 2020 - Pokedex
+            </div>
+            <div class="float-right" style="text-align:center; color:white;">
+                 Feito por Gabrielle
+            </div>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

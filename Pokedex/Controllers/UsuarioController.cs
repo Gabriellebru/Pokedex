@@ -31,6 +31,10 @@ namespace Pokedex.Controllers
         {
             Contexto db = new Contexto();
             user = db.Usuario.Find(id);
+            if(user == null)
+            {
+                return RedirectToAction("Login","Home");
+            }
             user.Pokemon = db.Pokemon.Find(user.PokemonId);
             return View(user);
         }
@@ -54,12 +58,13 @@ namespace Pokedex.Controllers
 
         #region HttpPost
         [HttpPost]
-        public IActionResult Create(Usuario objeto)
+        public IActionResult Criar(Usuario objeto)
         {
             Contexto db = new Contexto();
             if(objeto.Nome == null || objeto.SenhaAcesso == null || objeto.UsuarioAcesso == null || objeto.PokemonId == null)
             {
-                return RedirectToAction("Criar");
+                ViewBag.Pokemons = db.Pokemon.ToList();
+                return View(objeto);
             }
             db.Usuario.Add(objeto);
             db.SaveChanges();
@@ -98,6 +103,16 @@ namespace Pokedex.Controllers
             return RedirectToAction("Detalhes",new { id = usuario.UsuarioID});
         }
         
+        public IActionResult AlterarPokemon(int pokemonId, int usuarioId)
+        {
+            Contexto db = new Contexto();
+            user = db.Usuario.Find(usuarioId);
+            user.PokemonId = pokemonId;
+            db.Usuario.Update(user);
+            db.SaveChanges();
+            return RedirectToAction("Visualizar","Pokemon",new {id = user.UsuarioID });
+        }
+
         #endregion
     }
 }

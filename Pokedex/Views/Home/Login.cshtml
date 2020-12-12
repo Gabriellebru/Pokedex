@@ -6,8 +6,8 @@
 <div class="text-center" style="align-content:center; align-items:center; margin-top: 5%">
     <h1 class="display-4"><b>Pokédex Login</b></h1><br />
     <center>
-        <form asp-action="Login" style="width:250px;">
-            <input asp-for="UsuarioAcesso" placeholder="Usuario de acesso" class="form-control" />
+        <form asp-action="Login" style="width:250px;" autocomplete="off">
+            <input asp-for="UsuarioAcesso" placeholder="Usuário de acesso" class="form-control" />
             <span asp-validation-for="UsuarioAcesso" class="text-danger"></span><br />
             <input type="password" asp-for="SenhaAcesso" placeholder="Senha de acesso" class="form-control" />
             <span asp-validation-for="SenhaAcesso" class="text-danger"></span><br>

@@ -9,7 +9,7 @@
 <h2>Pokedex (NatinalDex)</h2>
 @Html.ActionLink("Meu Perfil", "Detalhes", "Usuario", new { id = ViewBag.Usuario.UsuarioID }, new { @class = "btn btn-outline-primary" })
 <table class="table table-striped table-hover">
-    <thead>
+    <thead style="text-align:center">
         <tr>
             <th>
                 Pokémon ID
@@ -23,8 +23,11 @@
             <th>
                 Detalhes
             </th>
+            <th>
+                Alterar Pokémon
+            </th>
     </thead>
-    <tbody>
+    <tbody style="text-align:center">
         @foreach (Pokemon item in Model)
         {
             <tr>
@@ -47,7 +50,11 @@
                     @item.Nome
                 </td>
                 <td>
-                    @Html.ActionLink("Detalhes", "Detalhes", "Pokemon", new { id = item.PokemonId, usuarioid = ViewBag.Usuario.UsuarioID }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("Detalhes", "Detalhes", "Pokemon", new { id = item.PokemonId, usuarioId = ViewBag.Usuario.UsuarioID }, new { @class = "btn btn-outline-primary" })
+                </td>
+                <td>
+                    @Html.ActionLink("Alterar Pokémon","AlterarPokemon","Usuario",new { pokemonId = item.PokemonId, usuarioId = ViewBag.Usuario.UsuarioID },new  { @class = "btn btn-outline-primary" })
+
                 </td>
             </tr>
 

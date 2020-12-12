@@ -7,13 +7,11 @@
     ViewData["UsuarioID"] = Model.UsuarioID;
 }
 
-<h1>Editar</h1>
-
-<h4>Usuario</h4>
+<h1>Editar Usuário</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Editar">
+        <form asp-action="Editar"autocomplete="off">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UsuarioID" />
             <div class="form-group">
@@ -22,17 +20,17 @@
                 <span asp-validation-for="Nome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="UsuarioAcesso" class="control-label"></label>
+                Usuário De Acesso
                 <input asp-for="UsuarioAcesso" class="form-control" />
                 <span asp-validation-for="UsuarioAcesso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SenhaAcesso" class="control-label"></label>
+                Senha De Acesso
                 <input asp-for="SenhaAcesso" type="password" class="form-control" />
                 <span asp-validation-for="SenhaAcesso" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="PokemonId" class="control-label"></label>
+                Nome do Pokémon
                 <select asp-for="PokemonId" class="form-control">
                     <option selected disabled hidden>Selecione um Pokemon</option>
                     @foreach (Pokemon pokemon in ViewBag.Pokemons)
@@ -43,6 +41,7 @@
             </div>
             <div class="form-group">
                 <input type="submit" value="Salvar" class="btn btn-primary" />
+                @Html.ActionLink("Voltar ao meu perfil", "Detalhes", "Usuario", new { id = Model.UsuarioID }, new { @class="btn btn-primary"})
             </div>
         </form>
     </div>

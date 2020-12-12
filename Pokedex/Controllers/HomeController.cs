@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.SqlServer.Query.Internal;
 using Microsoft.Extensions.Logging;
 using Pokedex.Dados.EntityFramework.Comum;
@@ -28,6 +30,14 @@ namespace Pokedex.Controllers
             if (usuario != null)
             {
                 return RedirectToAction("Visualizar", "Pokemon", new { id = usuario.UsuarioID });
+            }
+            usuario = usuarios.Find(a => a.UsuarioAcesso == user.UsuarioAcesso);
+            if(user.UsuarioAcesso != null)
+            {
+                if(user.SenhaAcesso != usuario.SenhaAcesso)
+                {
+                    ModelState.AddModelError("SenhaAcesso", "Verifique a sua senha");
+                }
             }
             return View(user);
         }
